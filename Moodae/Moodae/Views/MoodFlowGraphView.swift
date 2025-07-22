@@ -661,14 +661,7 @@ struct MoodFlowGraphView: View {
     private func getWeeklyPattern() -> String? {
         guard timeframe == .year, !processedDataPoints.isEmpty else { return nil }
         
-        let calendar = Calendar.current
-        let now = Date()
-        let startOfYear = calendar.date(byAdding: .year, value: -1, to: now) ?? now
-        
         let moodCounts: [MoodType: Int] = processedDataPoints.reduce(into: [:]) { counts, point in
-            let date = point.date
-            let startOfWeek = calendar.date(byAdding: .weekOfYear, value: -1, to: date) ?? date
-            
             if let count = counts[point.mood] {
                 counts[point.mood] = count + 1
             } else {
