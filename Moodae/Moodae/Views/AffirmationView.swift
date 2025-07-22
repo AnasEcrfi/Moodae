@@ -17,19 +17,132 @@ struct AffirmationView: View {
     @Environment(\.colorScheme) var colorScheme
     
     private let affirmations: [MoodType: [String]] = [
+        .amazing: [
+            "You're radiating pure magic today ✨",
+            "This energy is incredible - keep it flowing!",
+            "You're unstoppable right now",
+            "Amazing things happen to amazing people",
+            "Your light is shining so bright today",
+            "This is your moment to soar",
+            "You're living your best life",
+            "Your positive energy is transforming everything",
+            "Today is proof of your incredible power",
+            "You're creating miracles just by being you",
+            "The universe is conspiring in your favor",
+            "Your joy is magnetic and inspiring",
+            "You're in perfect alignment with your purpose",
+            "This feeling is your natural state",
+            "You're a walking example of possibility",
+            "Your enthusiasm is changing lives",
+            "You're writing the best chapter yet",
+            "Everything is working out beautifully",
+            "You're attracting abundance effortlessly",
+            "This energy will ripple into tomorrow"
+        ],
         .good: [
             "Your positive energy is contagious ✨",
             "You're creating beautiful moments",
             "Keep shining, you're doing amazing",
             "Your joy lights up the world",
-            "Today's victories, big and small, matter"
+            "Today's victories, big and small, matter",
+            "You're exactly where you need to be",
+            "Your smile changes everything",
+            "Good things flow to you naturally",
+            "You're making a difference today",
+            "This feeling suits you perfectly",
+            "You're building momentum with every step",
+            "Your optimism is your superpower",
+            "Life is responding to your positive vibes",
+            "You're cultivating happiness from within",
+            "Your gratitude is multiplying your blessings",
+            "You're becoming the person you're meant to be",
+            "Small joys create lasting happiness",
+            "You're proof that good things happen",
+            "Your presence brings light to others",
+            "This is what contentment feels like"
+        ],
+        .okay: [
+            "Okay days are still worthy days 🌱",
+            "You're doing better than you think",
+            "Small steps count too",
+            "Balance is beautiful",
+            "You're allowed to just be today",
+            "Steady progress is still progress",
+            "You're holding space for yourself",
+            "Even neutral days have value",
+            "You're exactly enough right now",
+            "Tomorrow holds new possibilities",
+            "Being average is perfectly acceptable",
+            "You're in a season of gentle growth",
+            "Stability has its own kind of strength",
+            "You're honoring your natural rhythms",
+            "Not every day needs to be extraordinary",
+            "You're building resilience in quiet ways",
+            "Consistency is more valuable than intensity",
+            "You're learning to be present",
+            "This calm energy serves you well",
+            "You're exactly where you're supposed to be"
         ],
         .challenging: [
-            "This feeling is temporary, you are resilient 💙",
+            "This feeling is temporary, you are resilient 🤍",
             "It's okay to have difficult days",
             "You're stronger than you know",
             "Tomorrow brings new possibilities",
-            "Your feelings are valid, and you're not alone"
+            "Your feelings are valid, and you're not alone",
+            "Every storm passes eventually",
+            "You've overcome challenges before",
+            "Rest is part of the healing process",
+            "You're allowed to feel this way",
+            "Your courage shows even in hard times",
+            "You're doing the best you can right now",
+            "Healing isn't linear, and that's okay",
+            "This chapter doesn't define your story",
+            "Your sensitivity is a strength, not weakness",
+            "You're learning something important today"
+        ],
+        .tough: [
+            "You're braver than you believe 💪",
+            "This pain won't last forever",
+            "One breath at a time is enough",
+            "You're not walking this path alone",
+            "Your strength runs deeper than this moment",
+            "It's okay to ask for support",
+            "You matter, especially on hard days",
+            "This is temporary, you are permanent",
+            "Your resilience is remarkable",
+            "Better days are coming, trust the process",
+            "You've survived every hard day so far",
+            "Your scars tell a story of survival",
+            "Difficult roads often lead to beautiful places",
+            "You're stronger in the broken places",
+            "This struggle is shaping your wisdom",
+            "You're allowed to rest when you're tired",
+            "Progress includes the messy middle",
+            "Your pain has purpose, even if hidden",
+            "You're writing a comeback story",
+            "The mountain teaches you to climb"
+        ],
+        .overwhelming: [
+            "You will get through this 🫂",
+            "Take it one moment at a time",
+            "You're stronger than this feeling",
+            "Reach out - you don't have to face this alone",
+            "This intensity will pass",
+            "You deserve support and care",
+            "Your feelings are completely valid",
+            "You've survived 100% of your hardest days",
+            "Healing takes time, be patient with yourself",
+            "You are loved, even when it's hard to feel",
+            "This storm is temporary, you are not",
+            "You don't have to carry this alone",
+            "Professional help is a sign of strength",
+            "Your mental health matters deeply",
+            "It's okay to not be okay right now",
+            "You're worthy of compassion and care",
+            "This feeling will not consume you",
+            "You have people who want to help",
+            "Crisis hotlines are there for you",
+            "Tomorrow can look different than today"
         ]
     ]
     
@@ -95,13 +208,13 @@ struct AffirmationView: View {
                 Circle()
                     .fill(
                         LinearGradient(
-                            colors: moodColors,
+                            colors: [DesignSystem.Colors.success, DesignSystem.Colors.success.opacity(0.8)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
                     .frame(width: 80, height: 80)
-                    .shadow(color: moodColors.first?.opacity(0.3) ?? .clear, radius: 12, x: 0, y: 6)
+                    .shadow(color: DesignSystem.Colors.success.opacity(0.3), radius: 12, x: 0, y: 6)
                 
                 Image(systemName: "checkmark")
                     .font(.title)
@@ -158,13 +271,13 @@ struct AffirmationView: View {
             .padding(.vertical, 16)
             .background(
                 LinearGradient(
-                    colors: moodColors,
+                    colors: [DesignSystem.Colors.accent, DesignSystem.Colors.accent.opacity(0.8)],
                     startPoint: .leading,
                     endPoint: .trailing
                 )
             )
             .cornerRadius(16)
-            .shadow(color: moodColors.first?.opacity(0.3) ?? .clear, radius: 8, x: 0, y: 4)
+            .shadow(color: DesignSystem.Colors.accent.opacity(0.3), radius: 8, x: 0, y: 4)
         }
         .buttonStyle(.plain)
         .opacity(isVisible ? 1.0 : 0.0)
@@ -172,11 +285,7 @@ struct AffirmationView: View {
         .animation(.easeOut(duration: 0.8).delay(0.9), value: isVisible)
     }
     
-    private var moodColors: [Color] {
-        moodType == .good ? 
-                            [DesignSystem.weatherIconColor(for: .good), DesignSystem.weatherIconColor(for: .good).opacity(0.8)] :
-                            [DesignSystem.weatherIconColor(for: .challenging), DesignSystem.weatherIconColor(for: .challenging).opacity(0.8)]
-    }
+
     
     private var cardBackgroundColor: Color {
         colorScheme == .dark ? Color(.systemGray6) : Color.white

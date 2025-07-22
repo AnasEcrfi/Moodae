@@ -227,7 +227,7 @@ struct TextOrAudioInputView: View {
                     RoundedRectangle(cornerRadius: DesignSystem.CornerRadius.md)
                         .fill(
                             LinearGradient(
-                                colors: moodGradientColors,
+                                colors: [DesignSystem.Colors.success, DesignSystem.Colors.success.opacity(0.8)],
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )

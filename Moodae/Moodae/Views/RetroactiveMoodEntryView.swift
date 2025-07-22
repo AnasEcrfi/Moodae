@@ -186,13 +186,13 @@ struct RetroactiveMoodEntryView: View {
                 .padding(.vertical, 16)
                 .background(
                     LinearGradient(
-                        colors: moodColors,
+                        colors: [DesignSystem.Colors.success, DesignSystem.Colors.success.opacity(0.8)],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
                 )
                 .cornerRadius(16)
-                .shadow(color: moodColors.first?.opacity(0.3) ?? .clear, radius: 8, x: 0, y: 4)
+                .shadow(color: DesignSystem.Colors.success.opacity(0.3), radius: 8, x: 0, y: 4)
             }
             .buttonStyle(SmoothButtonStyle())
             
@@ -293,9 +293,9 @@ struct SuccessView: View {
                 // Success Icon
                 ZStack {
                     Circle()
-                                            .fill(DesignSystem.moodColor(isGood: mood == .good))
-                    .frame(width: 80, height: 80)
-                    .shadow(color: DesignSystem.moodColor(isGood: mood == .good).opacity(0.3), radius: 12)
+                        .fill(DesignSystem.Colors.success)
+                        .frame(width: 80, height: 80)
+                        .shadow(color: DesignSystem.Colors.success.opacity(0.3), radius: 12)
                     
                     Image(systemName: "checkmark")
                         .font(.title)
@@ -322,7 +322,7 @@ struct SuccessView: View {
                     onDismiss()
                 }
                 .font(.headline)
-                .foregroundColor(DesignSystem.moodColor(isGood: mood == .good))
+                .foregroundColor(DesignSystem.Colors.accent)
                 .opacity(isVisible ? 1 : 0)
                 .animation(.easeOut.delay(0.5), value: isVisible)
             }

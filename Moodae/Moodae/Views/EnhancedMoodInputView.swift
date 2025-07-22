@@ -209,7 +209,7 @@ struct EnhancedMoodInputView: View {
                 .frame(height: 50)
                 .background(
                     LinearGradient(
-                        colors: DesignSystem.moodGradientColors(for: moodType),
+                        colors: [DesignSystem.Colors.success, DesignSystem.Colors.success.opacity(0.8)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )

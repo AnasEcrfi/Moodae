@@ -481,18 +481,77 @@ struct WeeklyStats {
 extension MoodViewModel {
     func getAffirmation(for moodType: MoodType) -> String {
         let affirmations: [MoodType: [String]] = [
+            .amazing: [
+                "You're radiating pure magic today ✨",
+                "This energy is incredible - keep it flowing!",
+                "You're unstoppable right now",
+                "Amazing things happen to amazing people",
+                "Your light is shining so bright today",
+                "The universe is conspiring in your favor",
+                "Your joy is magnetic and inspiring",
+                "You're in perfect alignment with your purpose",
+                "This feeling is your natural state",
+                "You're attracting abundance effortlessly"
+            ],
             .good: [
                 "You made it through. That counts.",
                 "Small wins matter too.",
                 "This feeling is worth noting.",
-                "You're building something beautiful."
+                "You're building something beautiful.",
+                "Your positive energy is contagious ✨",
+                "You're building momentum with every step",
+                "Your optimism is your superpower",
+                "Life is responding to your positive vibes",
+                "You're cultivating happiness from within",
+                "Small joys create lasting happiness"
+            ],
+            .okay: [
+                "Okay days are still worthy days 🌱",
+                "You're doing better than you think",
+                "Small steps count too",
+                "Balance is beautiful",
+                "You're exactly enough right now",
+                "Being average is perfectly acceptable",
+                "You're in a season of gentle growth",
+                "Stability has its own kind of strength",
+                "Not every day needs to be extraordinary",
+                "Consistency is more valuable than intensity"
             ],
             .challenging: [
                 "Bad days don't define you.",
                 "Noted. Now let it go.",
                 "Tomorrow is unwritten.",
                 "You're stronger than this moment.",
-                "This too shall pass."
+                "This too shall pass.",
+                "This feeling is temporary, you are resilient 🤍",
+                "You're doing the best you can right now",
+                "Healing isn't linear, and that's okay",
+                "This chapter doesn't define your story",
+                "Your sensitivity is a strength, not weakness"
+            ],
+            .tough: [
+                "You're braver than you believe 💪",
+                "This pain won't last forever",
+                "One breath at a time is enough",
+                "You're not walking this path alone",
+                "Your strength runs deeper than this moment",
+                "You've survived every hard day so far",
+                "Your scars tell a story of survival",
+                "Difficult roads often lead to beautiful places",
+                "You're stronger in the broken places",
+                "This struggle is shaping your wisdom"
+            ],
+            .overwhelming: [
+                "You will get through this 🫂",
+                "Take it one moment at a time",
+                "You're stronger than this feeling",
+                "This intensity will pass",
+                "You've survived 100% of your hardest days",
+                "This storm is temporary, you are not",
+                "Professional help is a sign of strength",
+                "Your mental health matters deeply",
+                "It's okay to not be okay right now",
+                "You're worthy of compassion and care"
             ]
         ]
         
