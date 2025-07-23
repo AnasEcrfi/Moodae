@@ -264,21 +264,21 @@ struct PrivacyPolicyView: View {
                             title: "Contact Us",
                             content: """
                             Privacy Questions & Requests:
-                            Email: privacy@moodae.app
+                            Email: apps@mpagency.ae
                             Response time: Within 48 hours
 
                             Data Protection Officer:
-                            Email: dpo@moodae.app
+                            Email: apps@mpagency.ae
                             For GDPR-related inquiries
 
                             General Support:
-                            Email: support@moodae.app
+                            Email: apps@mpagency.ae
                             App Store: Developer Response Section
 
-                            Mailing Address:
-                            Moodae Privacy Team
-                            [Your Address]
-                            [City, State, Zip Code]
+                            Company Information:
+                            MPAGENCY MARKETING - FZCO
+                            Building A1, Dubai Digital Park
+                            Dubai, United Arab Emirates
                             """
                         )
                     }

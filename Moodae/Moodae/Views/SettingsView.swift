@@ -268,13 +268,14 @@ struct SettingsView: View {
                         .background(DesignSystem.Colors.secondary.opacity(0.3))
                         .padding(.leading, 56)
                     
-                    settingsRowWithBadge(
+                    settingsRow(
                         icon: "bell.fill",
                         iconColor: DesignSystem.Colors.warning,
                         title: "Smart Notifications",
                         subtitle: "Intelligent daily mood reminders",
-                        badge: "Coming Soon",
-                        badgeColor: DesignSystem.Colors.accent
+                        showChevron: false,
+                        action: {},
+                        comingSoon: true
                     )
                 }
             }
@@ -347,8 +348,9 @@ struct SettingsView: View {
                         iconColor: DesignSystem.Colors.info,
                         title: "Help & FAQ",
                         subtitle: "Get help with using Moodae",
-                        showChevron: true,
-                        action: {}
+                        showChevron: false,
+                        action: {},
+                        comingSoon: true
                     )
                     
                     Divider()
@@ -362,6 +364,22 @@ struct SettingsView: View {
                         subtitle: "Send feedback or report issues",
                         showChevron: true,
                         action: { showingFeedback = true }
+                    )
+                    
+                    Divider()
+                        .background(DesignSystem.Colors.secondary.opacity(0.3))
+                        .padding(.leading, 56)
+                    
+                    settingsRow(
+                        icon: "star.fill",
+                        iconColor: DesignSystem.Colors.warning,
+                        title: "Rate Moodae",
+                        subtitle: "Help us with a review in the App Store",
+                        showChevron: true,
+                        action: { 
+                            HapticFeedback.medium.trigger()
+                            viewModel.reviewManager.requestManualReview()
+                        }
                     )
                 }
             }
@@ -399,31 +417,48 @@ struct SettingsView: View {
         title: String,
         subtitle: String,
         showChevron: Bool = true,
-        action: @escaping () -> Void
+        action: @escaping () -> Void,
+        comingSoon: Bool = false
     ) -> some View {
         Button(action: {
-            HapticFeedback.light.trigger()
-            action()
+            if !comingSoon {
+                HapticFeedback.light.trigger()
+                action()
+            }
         }) {
             HStack(spacing: DesignSystem.Spacing.md) {
                 // Icon
-                settingsIconView(icon: icon, color: iconColor)
+                settingsIconView(icon: icon, color: comingSoon ? DesignSystem.Colors.secondary.opacity(0.6) : iconColor)
                 
                 // Content
                 VStack(alignment: .leading, spacing: DesignSystem.Spacing.xs) {
-                    Text(title)
-                        .font(DesignSystem.Typography.bodyMedium)
-                        .foregroundColor(DesignSystem.Colors.primary)
+                    HStack(spacing: DesignSystem.Spacing.sm) {
+                        Text(title)
+                            .font(DesignSystem.Typography.bodyMedium)
+                            .foregroundColor(comingSoon ? DesignSystem.Colors.secondary.opacity(0.7) : DesignSystem.Colors.primary)
+                        
+                        if comingSoon {
+                            Text("Coming Soon")
+                                .font(.system(size: 11, weight: .medium))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 2)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(DesignSystem.Colors.accent.opacity(0.8))
+                                )
+                        }
+                    }
                     
                     Text(subtitle)
                         .font(DesignSystem.Typography.caption)
-                        .foregroundColor(DesignSystem.Colors.secondary)
+                        .foregroundColor(DesignSystem.Colors.secondary.opacity(comingSoon ? 0.6 : 1.0))
                 }
                 
                 Spacer()
                 
                 // Chevron
-                if showChevron {
+                if showChevron && !comingSoon {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 12, weight: .light))
                         .foregroundColor(DesignSystem.Colors.secondary)

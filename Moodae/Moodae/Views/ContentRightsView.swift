@@ -251,21 +251,21 @@ struct ContentRightsView: View {
                             title: "Contact for Content Rights Issues",
                             content: """
                             Copyright Questions:
-                            Email: copyright@moodae.app
+                            Email: apps@mpagency.ae
                             
                             DMCA Notices:
-                            Email: dmca@moodae.app
+                            Email: apps@mpagency.ae
                             
                             Legal Department:
-                            Email: legal@moodae.app
+                            Email: apps@mpagency.ae
                             
                             General Support:
-                            Email: support@moodae.app
+                            Email: apps@mpagency.ae
                             
-                            Mailing Address:
-                            Moodae Legal Department
-                            [Your Address]
-                            [City, State, Zip Code]
+                            Company Information:
+                            MPAGENCY MARKETING - FZCO
+                            Building A1, Dubai Digital Park
+                            Dubai, United Arab Emirates
                             
                             Response Time:
                             • DMCA notices: Within 24 hours

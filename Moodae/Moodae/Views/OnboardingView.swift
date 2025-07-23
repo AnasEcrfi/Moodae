@@ -469,7 +469,7 @@ struct OnboardingSlideView: View {
             }
         }) {
             HStack(spacing: DesignSystem.Spacing.sm) {
-                Text("Get Started")
+                Text("Get Started for Free")
                     .font(.system(size: 16, weight: .semibold))
                     .opacity(isVisible ? 1.0 : 0.0)
                     .offset(x: isVisible ? 0 : -20)

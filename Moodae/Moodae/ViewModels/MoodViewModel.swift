@@ -29,6 +29,9 @@ class MoodViewModel: ObservableObject {
     @Published var healthKitManager: HealthKitManager
     @Published var showHealthKitPrompt = false
     
+    // App Store Review Manager
+    @Published var reviewManager = AppStoreReviewManager()
+    
     // Simple analytics without AI
     @Published var currentInsight: MoodInsight?
     
@@ -171,6 +174,10 @@ class MoodViewModel: ObservableObject {
         
         moodEntries = demoEntries
         saveMoodEntriesToUserDefaults()
+        
+        // Für Demo-Daten: Review Manager für reale Einträge zurücksetzen
+        // User sollte beim ersten ECHTEN Eintrag die Review-Anfrage erhalten
+        // Demo-Daten zählen nicht als "erste Nutzung"
     }
     
     // MARK: - Data Operations (UserDefaults for now, will be Core Data later)
@@ -210,6 +217,10 @@ class MoodViewModel: ObservableObject {
         resetCurrentEntry()
         calculateInsights()
         calculateWeeklyStats()
+        
+        // 🌟 App Store Review Request nach Mood Entry
+        reviewManager.incrementMoodEntryCount()
+        reviewManager.checkForReviewRequest(after: moodEntry)
     }
     
     /// SPEZIAL-METHODE: Speichert Mood Entry für spezifisches Datum
@@ -235,6 +246,10 @@ class MoodViewModel: ObservableObject {
         resetCurrentEntry()
         calculateInsights()
         calculateWeeklyStats()
+        
+        // 🌟 App Store Review Request nach Mood Entry
+        reviewManager.incrementMoodEntryCount()
+        reviewManager.checkForReviewRequest(after: moodEntry)
     }
     
     // MARK: - LEGACY METHODS (für Rückwärtskompatibilität - werden intern weitergeleitet)

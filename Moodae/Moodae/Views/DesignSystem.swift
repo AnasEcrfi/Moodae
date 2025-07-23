@@ -466,7 +466,7 @@ struct CleanMoodCard: View {
                         .lineLimit(1)
                 }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, minHeight: 120)  // Feste Mindesthöhe für Konsistenz
             .padding(.vertical, DesignSystem.Spacing.lg)
             .padding(.horizontal, DesignSystem.Spacing.md)
             .background(
