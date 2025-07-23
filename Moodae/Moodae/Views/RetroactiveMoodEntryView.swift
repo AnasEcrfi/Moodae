@@ -115,8 +115,8 @@ struct RetroactiveMoodEntryView: View {
             
             HStack(spacing: 20) {
                 MoodButton(
-                    title: "Good Day",
-                    icon: "sun.max.fill",
+                    title: MoodType.good.displayName,  // Konsistente Titel
+                    icon: MoodType.good.icon,  // Konsistent mit anderen Views  
                     color: DesignSystem.moodColor(for: .good),
                     isSelected: selectedMood == .good
                 ) {
@@ -127,8 +127,8 @@ struct RetroactiveMoodEntryView: View {
                 }
                 
                 MoodButton(
-                    title: "Difficult Day",
-                    icon: "cloud.rain.fill",
+                    title: MoodType.challenging.displayName,  // Konsistente Titel
+                    icon: MoodType.challenging.icon,  // Konsistent mit anderen Views
                     color: DesignSystem.moodColor(for: .challenging),
                     isSelected: selectedMood == .challenging
                 ) {

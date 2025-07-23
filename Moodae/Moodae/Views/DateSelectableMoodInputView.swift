@@ -147,9 +147,9 @@ struct DateSelectableMoodInputView: View {
                     GridItem(.flexible())
                 ], spacing: DesignSystem.Spacing.md) {
                     CleanMoodCard(
-                        title: "Amazing",
+                        title: MoodType.amazing.displayName,  // Konsistente Titel
                         subtitle: "Incredible day",
-                        icon: "sun.max.trianglebadge.exclamationmark",
+                        icon: MoodType.amazing.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .amazing),
                         action: { selectMood(.amazing) },
                         moodType: .amazing,
@@ -158,9 +158,9 @@ struct DateSelectableMoodInputView: View {
                     .subtleAppearance(delay: 0.4)
                     
                     CleanMoodCard(
-                        title: "Good",
+                        title: MoodType.good.displayName,  // Konsistente Titel
                         subtitle: "Positive moments",
-                        icon: "sun.max",
+                        icon: MoodType.good.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .good),
                         action: { selectMood(.good) },
                         moodType: .good,
@@ -169,9 +169,9 @@ struct DateSelectableMoodInputView: View {
                     .subtleAppearance(delay: 0.45)
                     
                     CleanMoodCard(
-                        title: "Okay",
+                        title: MoodType.okay.displayName,  // Konsistente Titel
                         subtitle: "Balanced day",
-                        icon: "sun.and.horizon",
+                        icon: MoodType.okay.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .okay),
                         action: { selectMood(.okay) },
                         moodType: .okay,
@@ -192,9 +192,9 @@ struct DateSelectableMoodInputView: View {
                     GridItem(.flexible())
                 ], spacing: DesignSystem.Spacing.md) {
                     CleanMoodCard(
-                        title: "Challenging",
+                        title: MoodType.challenging.displayName,  // Konsistente Titel
                         subtitle: "Some obstacles",
-                        icon: "cloud.sun",
+                        icon: MoodType.challenging.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .challenging),
                         action: { selectMood(.challenging) },
                         moodType: .challenging,
@@ -203,9 +203,9 @@ struct DateSelectableMoodInputView: View {
                     .subtleAppearance(delay: 0.6)
                     
                     CleanMoodCard(
-                        title: "Tough",
+                        title: MoodType.tough.displayName,  // Konsistente Titel
                         subtitle: "Hard moments",
-                        icon: "cloud.rain",
+                        icon: MoodType.tough.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .tough),
                         action: { selectMood(.tough) },
                         moodType: .tough,
@@ -214,9 +214,9 @@ struct DateSelectableMoodInputView: View {
                     .subtleAppearance(delay: 0.65)
                     
                     CleanMoodCard(
-                        title: "Overwhelming",
+                        title: MoodType.overwhelming.displayName,  // Konsistente Titel
                         subtitle: "Very difficult",
-                        icon: "cloud.heavyrain",
+                        icon: MoodType.overwhelming.icon,  // Konsistent verwenden
                         color: DesignSystem.moodColor(for: .overwhelming),
                         action: { selectMood(.overwhelming) },
                         moodType: .overwhelming,

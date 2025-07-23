@@ -140,22 +140,39 @@ struct CustomTabBarView: View {
                     action: { selectTab(.timeline) }
                 )
                 
-                // Center Plus Button
+                // Center Elevated Plus Button
                 Button(action: {
+                    HapticFeedback.medium.trigger()
                     triggerMoodInput()
                 }) {
                     ZStack {
+                        // Shadow/Backdrop Circle
                         Circle()
-                            .fill(DesignSystem.Colors.accent)
-                            .frame(width: 48, height: 48)
+                            .fill(DesignSystem.Colors.accent.opacity(0.15))
+                            .frame(width: 85, height: 85)
+                            .blur(radius: 12)
+                            .offset(y: 4)
                         
+                        // Main Button Circle
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [DesignSystem.Colors.accent, DesignSystem.Colors.accent.opacity(0.8)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 80, height: 80)
+                            .shadow(color: DesignSystem.Colors.accent.opacity(0.5), radius: 16, x: 0, y: 8)
+                        
+                        // Plus Icon
                         Image(systemName: "plus")
-                            .font(.system(size: 20, weight: .medium))
+                            .font(.system(size: 32, weight: .bold))
                             .foregroundColor(.white)
                     }
                 }
-                .buttonStyle(PlainButtonStyle())
-                .scaleEffect(0.95)
+                .buttonStyle(ModernFloatingButtonStyle())
+                .offset(y: -20) // Much more elevated above tab bar
                 .accessibilityLabel("Add mood entry")
                 .accessibilityHint("Double tap to add a new mood entry")
                 
@@ -300,6 +317,16 @@ struct TabBarBackground: View {
                     y: -1
                 )
         }
+    }
+}
+
+// MARK: - Modern Floating Button Style
+struct ModernFloatingButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
+            .opacity(configuration.isPressed ? 0.8 : 1.0)
+            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
     }
 }
 

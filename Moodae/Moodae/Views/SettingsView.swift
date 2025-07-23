@@ -22,6 +22,7 @@ struct SettingsView: View {
     @EnvironmentObject var weekStartManager: WeekStartManager
     
     @State private var showingPrivacyPolicy = false
+    @State private var showingContentRights = false
     @State private var showingDataExport = false
     @State private var hapticEnabled = UserDefaults.standard.object(forKey: "hapticEnabled") as? Bool ?? true
     @State private var reminderEnabled = UserDefaults.standard.object(forKey: "reminderEnabled") as? Bool ?? false
@@ -77,6 +78,9 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingPrivacyPolicy) {
             PrivacyPolicyView()
+        }
+        .sheet(isPresented: $showingContentRights) {
+            ContentRightsView()
         }
         .sheet(isPresented: $showingAppearancePicker) {
             AppearancePickerView(appearanceManager: appearanceManager)
@@ -197,6 +201,19 @@ struct SettingsView: View {
                         subtitle: "How we handle your data",
                         showChevron: true,
                         action: { showingPrivacyPolicy = true }
+                    )
+                    
+                    Divider()
+                        .background(DesignSystem.Colors.secondary.opacity(0.3))
+                        .padding(.leading, 56)
+                    
+                    settingsRow(
+                        icon: "c.circle.fill",
+                        iconColor: DesignSystem.Colors.info,
+                        title: "Content Rights",
+                        subtitle: "Copyright and attribution information",
+                        showChevron: true,
+                        action: { showingContentRights = true }
                     )
                 }
             }
